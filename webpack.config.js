@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -8,6 +9,10 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
+    new Dotenv({
+      path: './.env',
+      safe: true,
+    }),
     new HTMLWebpackPlugin({
       template: './public/index.html'
     })
@@ -25,5 +30,12 @@ module.exports = {
         }
       }
     ]
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    compress: true,
+    port: process.env.PORT || 3000,
   }
 };
