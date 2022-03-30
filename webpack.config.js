@@ -1,6 +1,7 @@
 const path = require('path');
-const Dotenv = require('dotenv-webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+
+require('dotenv').config();
 
 module.exports = {
   entry: './src/index.js',
@@ -9,10 +10,6 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    new Dotenv({
-      path: './.env',
-      safe: true,
-    }),
     new HTMLWebpackPlugin({
       template: './public/index.html'
     })
@@ -33,9 +30,10 @@ module.exports = {
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'public'),
+      directory: path.join(__dirname, 'public')
     },
     compress: true,
     port: process.env.PORT || 3000,
+    allowedHosts: ['.gitpod.io']
   }
 };
