@@ -1,6 +1,5 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 require('dotenv').config();
 
@@ -9,7 +8,7 @@ module.exports = {
   mode: process.env.NODE_ENV || 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.[fullhash].js'
+    filename: 'js/[name].[chunkhash].js'
   },
   resolve: { modules: [path.resolve(__dirname, 'src'), 'node_modules'] },
   module: {
@@ -32,10 +31,8 @@ module.exports = {
   plugins: [
     new HTMLWebpackPlugin({
       template: './public/index.html',
+      filename: "index.html",
       favicon: './public/favicon.ico',
-    }),
-    new WebpackManifestPlugin({
-      fileName: 'manifest.json'
     })
   ],
   devServer: {
