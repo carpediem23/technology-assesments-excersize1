@@ -53,6 +53,6 @@ module.exports = {
     port: process.env.PORT || 3000,
     allowedHosts: ['.gitpod.io'],
     historyApiFallback: true,
-    open: true
+    open: false
   }
 };
