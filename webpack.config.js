@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyPlugin = require("copy-webpack-plugin");
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 require('dotenv').config();
@@ -29,10 +30,19 @@ module.exports = {
     ]
   },
   plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: "./public/manifest.webmanifest", to: "." },
+        { from: "./public/icon.png", to: "assets/" },
+      ],
+    }),
     new HTMLWebpackPlugin({
+      inject: true,
       template: './public/index.html',
       filename: "index.html",
       favicon: './public/favicon.ico',
+      publicPath: '.',
+      manifest: './public/manifest.json',
     })
   ],
   devServer: {
