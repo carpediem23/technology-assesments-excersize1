@@ -25,21 +25,28 @@ module.exports = {
         test: /\.(css|scss)$/,
         use: [
           MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: 1,
+              url: true
+            }
+          },
           {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
                 plugins: [
                   [
-                    "autoprefixer",
+                    'autoprefixer',
                     {
                       // Options
-                    },
-                  ],
-                ],
-              },
-            },
+                    }
+                  ]
+                ]
+              }
+            }
           },
           {
             loader: 'sass-loader',
@@ -48,8 +55,11 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
-        use: ['file-loader']
+        test: /\.(woff(2)?|ttf|eot|svg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: './fonts/[name].[hash][ext]'
+        }
       }
     ]
   },
@@ -74,9 +84,7 @@ module.exports = {
     })
   ],
   optimization: {
-    minimizer: [
-      new CssMinimizerPlugin()
-    ]
+    minimizer: [new CssMinimizerPlugin()]
   },
   devServer: {
     static: {
