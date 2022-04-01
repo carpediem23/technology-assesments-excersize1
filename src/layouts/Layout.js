@@ -9,7 +9,7 @@ import React from 'react';
  * <Layout><div>Hello World</div></Layout>
  */
 const Layout = ({ children }) => {
-  return <div className="container shadow p-3 mt-5 bg-white rounded">{children}</div>;
+  return <div className="container">{children}</div>;
 };
 
 Layout.propTypes = {

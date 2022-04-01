@@ -6,7 +6,8 @@ import getAddressbook from './service';
 const TYPES = {
   GET_ADDRESSBOOK_BEGIN: 'GET_ADDRESSBOOK_BEGIN',
   GET_ADDRESSBOOK_SUCCESS: 'GET_ADDRESSBOOK_SUCCESS',
-  GET_ADDRESSBOOK_FAILURE: 'GET_ADDRESSBOOK_FAILURE'
+  GET_ADDRESSBOOK_FAILURE: 'GET_ADDRESSBOOK_FAILURE',
+  USER_SEARCH: 'USER_SEARCH'
 };
 
 /**
@@ -56,4 +57,23 @@ const fetchAdressbookFailure = (response) => ({
   payload: response
 });
 
-export { fetchAddressbook, TYPES };
+/**
+ * User search method.
+ * @name  userSearch
+ * @param   {string} searchTerm User's search term.
+ * @returns {function}
+ */
+const userSearch = (searchTerm) => (dispatch) => dispatch(userSearchAction(searchTerm));
+
+/**
+ * User search action.
+ * @name  userSearchAction
+ * @param   {string} searchTerm User's search term.
+ * @returns {function}
+ */
+const userSearchAction = (searchTerm) => ({
+  type: TYPES.USER_SEARCH,
+  payload: searchTerm
+});
+
+export { fetchAddressbook, userSearch, TYPES };

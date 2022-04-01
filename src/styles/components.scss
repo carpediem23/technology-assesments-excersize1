@@ -1,7 +1,40 @@
-body {
-    background: radial-gradient(
-      circle,
-      $body-bg 30%,
-      $gray-400 100%
-    );
+/*COMPONENTS START*/
+.AddressBook {
+  width: 600px;
+  max-width: 100%;
+  margin: auto;
+  margin-top: $spacer * 2;
+  $input-color: #bdbdbd;
+  $background-color: #423d5d;
+  background-color: $background-color;
+
+  .AdressBook-search-form {
+    margin: 0;
+    padding: $spacer;
+
+    .AdressBook-search-form-bar {
+      display: flex;
+      align-items: center;
+
+      .AdressBook-search-form-icon {
+        display: block;
+        color: $input-color;
+      }
+
+      .AdressBook-search-form-input {
+        width: 100%;
+        margin-left: $spacer;
+        border: 0;
+        border-bottom: 0.75px solid $input-color;
+        outline: 0;
+        background: none;
+        color: lighten($input-color, 25);
+
+        &::placeholder {
+          color: $input-color !important;
+        }
+      }
+    }
   }
+}
+/*COMPONENTS END*/

@@ -1,10 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { AddressbookContext } from '../business';
-import { fetchAddressbook } from '../business/action';
+import { fetchAddressbook, userSearch } from '../business/action';
 
 const AddressBook = () => {
   const { dispatch, state } = useContext(AddressbookContext);
   const { data, loading, error } = state;
+
+  const onSearch = (e) => userSearch(e.target.value)(dispatch);
 
   console.log(data, loading, error);
 
@@ -13,11 +15,23 @@ const AddressBook = () => {
   }, [dispatch]);
 
   return (
-    <div className="row">
-      <div className="col">
-        <p>
-          react app <i className="fa fa-thumbs-up"></i>
-        </p>
+    <div className="AddressBook shadow rounded">
+      <div className="row">
+        <div className="col">
+          <form name="AdressBook-search-form" className="AdressBook-search-form">
+            <div className="AdressBook-search-form-bar">
+              <i className="AdressBook-search-form-icon fa fa-search"></i>
+              <input
+                type="text"
+                className="AdressBook-search-form-input"
+                id="search-term"
+                aria-describedby="emailHelp"
+                placeholder="SEARCH (Client Name / Policy Number)"
+                onChange={onSearch}
+              />
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
