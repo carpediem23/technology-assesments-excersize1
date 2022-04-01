@@ -25,7 +25,22 @@ module.exports = {
         test: /\.(css|scss)$/,
         use: [
           MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: { sourceMap: true } },
+          { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "autoprefixer",
+                    {
+                      // Options
+                    },
+                  ],
+                ],
+              },
+            },
+          },
           {
             loader: 'sass-loader',
             options: { sourceMap: true }
@@ -39,6 +54,7 @@ module.exports = {
     ]
   },
   plugins: [
+    require('autoprefixer'),
     new CopyPlugin({
       patterns: [
         { from: './public/manifest.webmanifest', to: '.' },
