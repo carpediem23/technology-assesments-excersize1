@@ -18,7 +18,7 @@ const client = axios.create({
 client.defaults.headers.common['Content-Type'] = 'application/json';
 client.defaults.headers.common['X-API-KEY'] = X_API_KEY;
 client.defaults.timeout = 60000;
-console.log(baseURL);
+
 /**
  * Info at https://github.com/axios/axios
  * @name    beginRequest

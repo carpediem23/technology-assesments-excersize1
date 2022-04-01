@@ -1,9 +1,17 @@
-import React from 'react';
-import useFetchAdressBook from '../business/useFetchAdressBook';
+import React, { useContext, useEffect } from 'react';
+import { AddressbookContext } from '../business';
+import { fetchAddressbook } from '../business/action';
 
 const AddressBook = () => {
-  const [response] = useFetchAdressBook();
-  console.log(response);
+  const { dispatch, state } = useContext(AddressbookContext);
+  const { data, loading, error } = state;
+
+  console.log(data, loading, error);
+
+  useEffect(() => {
+    fetchAddressbook()(dispatch);
+  }, [dispatch]);
+
   return (
     <div className="row">
       <div className="col">
