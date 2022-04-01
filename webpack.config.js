@@ -1,10 +1,10 @@
+const webpack = require('webpack');
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-
-require('dotenv').config();
 
 module.exports = {
   entry: './src/index.js',
@@ -64,6 +64,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new Dotenv(),
     require('autoprefixer'),
     new CopyPlugin({
       patterns: [
@@ -91,7 +92,6 @@ module.exports = {
       directory: path.join(__dirname, 'public')
     },
     compress: true,
-    port: process.env.PORT || 3000,
     allowedHosts: ['.gitpod.io'],
     historyApiFallback: true,
     open: false
