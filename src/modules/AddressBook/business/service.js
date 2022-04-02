@@ -5,6 +5,6 @@ import { HttpService } from '../../../services';
  * @name    getAddressbook
  * @returns {Promise} Response result.
  */
-const getAddressbook = () => HttpService.beginRequest({ url: '/address_book.json' });
+const getAddressbook = () => HttpService.beginRequest({ url: '/excersize_1_scheme.json' });
 
 export default getAddressbook;

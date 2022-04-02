@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Layout component.
@@ -9,7 +9,7 @@ import React from 'react';
  * <Layout><div>Hello World</div></Layout>
  */
 const Layout = ({ children }) => {
-  return <div className="container">{children}</div>;
+  return <main className="container-fluid">{children}</main>;
 };
 
 Layout.propTypes = {

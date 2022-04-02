@@ -5,3 +5,4 @@ public/
 .gitignore
 .npmignore
 webpack.config.js
+__tests__

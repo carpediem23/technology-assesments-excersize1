@@ -7,7 +7,8 @@ const TYPES = {
   GET_ADDRESSBOOK_BEGIN: 'GET_ADDRESSBOOK_BEGIN',
   GET_ADDRESSBOOK_SUCCESS: 'GET_ADDRESSBOOK_SUCCESS',
   GET_ADDRESSBOOK_FAILURE: 'GET_ADDRESSBOOK_FAILURE',
-  USER_SEARCH: 'USER_SEARCH'
+  USER_SEARCH: 'USER_SEARCH',
+  USER_FOCUS_SEARCH: 'USER_FOCUS_SEARCH'
 };
 
 /**
@@ -59,7 +60,7 @@ const fetchAdressbookFailure = (response) => ({
 
 /**
  * User search method.
- * @name  userSearch
+ * @name    userSearch
  * @param   {string} searchTerm User's search term.
  * @returns {function}
  */
@@ -67,7 +68,7 @@ const userSearch = (searchTerm) => (dispatch) => dispatch(userSearchAction(searc
 
 /**
  * User search action.
- * @name  userSearchAction
+ * @name    userSearchAction
  * @param   {string} searchTerm User's search term.
  * @returns {function}
  */
@@ -76,4 +77,23 @@ const userSearchAction = (searchTerm) => ({
   payload: searchTerm
 });
 
-export { fetchAddressbook, userSearch, TYPES };
+/**
+ * User search focus method.
+ * @name    userFocusSearch
+ * @param   {boolean} focus User clicked input.
+ * @returns {function}
+ */
+const userFocusSearch = (focus) => (dispatch) => dispatch(userFocusSearchAction(focus));
+
+/**
+ * User search focus action.
+ * @name    userFocusSearchAction
+ * @param   {boolean} focus User clicked input.
+ * @returns {function}
+ */
+const userFocusSearchAction = (focus) => ({
+  type: TYPES.USER_FOCUS_SEARCH,
+  payload: focus
+});
+
+export { fetchAddressbook, userSearch, userFocusSearch, TYPES };
