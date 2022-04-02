@@ -49,6 +49,6 @@ const handleError = (error) => {
   if (axios.isCancel(error)) {
     console.error('Request canceled', error.message);
   } else {
-    console.error(error);
+    console.error(error.response.data.error);
   }
 };

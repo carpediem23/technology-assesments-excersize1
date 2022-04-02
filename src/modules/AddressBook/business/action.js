@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import getAddressbook from './service';
 
 /**
@@ -21,7 +22,8 @@ const fetchAddressbook = () => {
     dispatch(fetchAdressbookBegin());
     return getAddressbook()
       .then((response) => {
-        dispatch(fetchAdressbookSuccess(response));
+        if (response) dispatch(fetchAdressbookSuccess(response));
+        else dispatch(fetchAdressbookSuccess({ data: [] }));
       })
       .catch((error) => {
         dispatch(fetchAdressbookFailure(error));
